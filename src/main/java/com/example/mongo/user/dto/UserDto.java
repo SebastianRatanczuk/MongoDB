@@ -2,13 +2,11 @@ package com.example.mongo.user.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 import java.util.List;
 
 @Data
 @Builder
-@Getter
 public class UserDto {
 
     private String name;

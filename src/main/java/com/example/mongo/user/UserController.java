@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<String> readAll() {
+    public List<UserDto> readAll() {
         return userService.readAll();
     }
 

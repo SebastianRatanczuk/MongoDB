@@ -22,9 +22,9 @@ public class UserService {
         userRepository.save(document);
     }
 
-    public List<String> readAll() {
+    public List<UserDto> readAll() {
         return userRepository.findAll().stream()
-                .map(Document::toString)
+                .map(userMapper::documentToDto)
                 .toList();
     }
 
