@@ -1,0 +1,319 @@
+{
+  "info": {
+    "_postman_id": "c4569548-2fbf-4905-9174-1d34ea5cf5e0",
+    "name": "mongo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"name\",\r\n    \"surname\": \"surname\",\r\n    \"pesel\": \"pesel\",\r\n    \"phone\": \"phone\",\r\n    \"measurements\": [\r\n        {\r\n            \"date\": \"date\",\r\n            \"measurement\": \"measurement\",\r\n            \"info\": \"info\"\r\n        }\r\n    ],\r\n    \"medications\": [\r\n        {\r\n            \"medicationName\": \"medicationName\",\r\n            \"dosage\": \"dosage\",\r\n            \"time\": \"time\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/user",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "findAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "127.0.0.1:8080/api/user",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"123123\",\r\n    \"surname\": \"surname\",\r\n    \"pesel\": \"pesel\",\r\n    \"phone\": \"phone\",\r\n    \"measurements\": [\r\n        {\r\n            \"date\": \"date\",\r\n            \"measurement\": \"measurement\",\r\n            \"info\": \"info\"\r\n        }\r\n    ],\r\n    \"medications\": [\r\n        {\r\n            \"medicationName\": \"medicationName\",\r\n            \"dosage\": \"dosage\",\r\n            \"time\": \"time\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/user/6478f3e904c005105afe3d60",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user",
+                "6478f3e904c005105afe3d60"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"123123\",\r\n    \"surname\": \"surname\",\r\n    \"pesel\": \"pesel\",\r\n    \"phone\": \"phone\",\r\n    \"measurements\": [\r\n        {\r\n            \"date\": \"date\",\r\n            \"measurement\": \"measurement\",\r\n            \"info\": \"info\"\r\n        }\r\n    ],\r\n    \"medications\": [\r\n        {\r\n            \"medicationName\": \"medicationName\",\r\n            \"dosage\": \"dosage\",\r\n            \"time\": \"time\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/user/6478f3e904c005105afe3d60",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user",
+                "6478f3e904c005105afe3d60"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update medications",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n    {\r\n        \"medicationName\": \"1231\",\r\n        \"dosage\": \"11231\",\r\n        \"time\": \"123123\"\r\n    }\r\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/user/medications/6478f3e904c005105afe3d60",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user",
+                "medications",
+                "6478f3e904c005105afe3d60"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update measurements",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n    {\r\n        \"date\": \"123123\",\r\n        \"measurement\": \"123123\",\r\n        \"info\": \"123231\"\r\n    }\r\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/user/measurements/6478f3e904c005105afe3d60",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user",
+                "measurements",
+                "6478f3e904c005105afe3d60"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "document",
+      "item": [
+        {
+          "name": "save",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clientId\": \"clientId\",\r\n    \"date\": \"date\",\r\n    \"name\": \"name\",\r\n    \"category\": \"category\",\r\n    \"fileData\": \"fileData\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/document",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "document"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "findAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "127.0.0.1:8080/api/document",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "document"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"123123\",\r\n    \"surname\": \"surname\",\r\n    \"pesel\": \"pesel\",\r\n    \"phone\": \"phone\",\r\n    \"measurements\": [\r\n        {\r\n            \"date\": \"date\",\r\n            \"measurement\": \"measurement\",\r\n            \"info\": \"info\"\r\n        }\r\n    ],\r\n    \"medications\": [\r\n        {\r\n            \"medicationName\": \"medicationName\",\r\n            \"dosage\": \"dosage\",\r\n            \"time\": \"time\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/document/64791de18a1d8956461602d1",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "document",
+                "64791de18a1d8956461602d1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clientId\": \"123231\",\r\n    \"date\": \"123\",\r\n    \"name\": \"123\",\r\n    \"category\": \"12321\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "127.0.0.1:8080/api/document/64791e2e8a1d8956461602d2",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "document",
+                "64791e2e8a1d8956461602d2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
