@@ -1,7 +1,8 @@
 package com.example.mongo.document;
 
-import com.example.mongo.document.dto.DocumentDto;
-import com.example.mongo.document.dto.DocumentUpdateDto;
+import com.example.mongo.document.dto.DocumentRequest;
+import com.example.mongo.document.dto.DocumentResponse;
+import com.example.mongo.document.dto.DocumentUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +16,17 @@ public class DocumentController {
     private final DocumentService documentService;
 
     @PostMapping
-    public void create(@RequestBody DocumentDto dto) {
+    public void create(@RequestBody DocumentRequest dto) {
         documentService.create(dto);
     }
 
     @GetMapping
-    public List<DocumentDto> readAll() {
+    public List<DocumentResponse> readAll() {
         return documentService.readAll();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @RequestBody DocumentUpdateDto dto) {
+    public void update(@PathVariable String id, @RequestBody DocumentUpdateRequest dto) {
         documentService.update(id, dto);
     }
 

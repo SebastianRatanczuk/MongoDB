@@ -2,7 +2,8 @@ package com.example.mongo.user;
 
 import com.example.mongo.user.dto.MeasurementDto;
 import com.example.mongo.user.dto.MedicationDto;
-import com.example.mongo.user.dto.UserDto;
+import com.example.mongo.user.dto.UserRequest;
+import com.example.mongo.user.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +17,17 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public void create(@RequestBody UserDto dto) {
+    public void create(@RequestBody UserRequest dto) {
         userService.create(dto);
     }
 
     @GetMapping
-    public List<UserDto> readAll() {
+    public List<UserResponse> readAll() {
         return userService.readAll();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @RequestBody UserDto dto) {
+    public void update(@PathVariable String id, @RequestBody UserRequest dto) {
         userService.update(id, dto);
     }
 

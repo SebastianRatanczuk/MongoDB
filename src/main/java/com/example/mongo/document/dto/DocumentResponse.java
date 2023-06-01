@@ -5,9 +5,11 @@ import lombok.Data;
 
 @Data
 @Builder
-public class DocumentUpdateDto {
+public class DocumentResponse {
+    String id;
     String clientId;
     String date;
     String name;
     String category;
+    byte[] fileData;
 }

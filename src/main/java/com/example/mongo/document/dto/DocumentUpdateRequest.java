@@ -5,10 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class DocumentDto {
+public class DocumentUpdateRequest {
     String clientId;
     String date;
     String name;
     String category;
-    byte[] fileData;
 }

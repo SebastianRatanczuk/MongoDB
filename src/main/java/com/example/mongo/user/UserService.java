@@ -2,7 +2,8 @@ package com.example.mongo.user;
 
 import com.example.mongo.user.dto.MeasurementDto;
 import com.example.mongo.user.dto.MedicationDto;
-import com.example.mongo.user.dto.UserDto;
+import com.example.mongo.user.dto.UserRequest;
+import com.example.mongo.user.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;
 import org.springframework.data.mongodb.core.query.Update;
@@ -17,36 +18,36 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public void create(UserDto userDto) {
-        Document document = userMapper.dtoToDocument(userDto);
+    public void create(UserRequest userRequest) {
+        Document document = userMapper.requestToDocument(userRequest);
         userRepository.save(document);
     }
 
-    public List<UserDto> readAll() {
+    public List<UserResponse> readAll() {
         return userRepository.findAll().stream()
-                .map(userMapper::documentToDto)
+                .map(userMapper::documentToResponse)
                 .toList();
     }
 
     public void updateMedications(String id, List<MedicationDto> medicationDtos) {
-        UserDto userDto = UserDto.builder()
+        UserRequest userRequest = UserRequest.builder()
                 .medications(medicationDtos)
                 .build();
-        update(id, userDto);
+        update(id, userRequest);
     }
 
     public void updateMeasurements(String id, List<MeasurementDto> measurementDtos) {
-        UserDto userDto = UserDto.builder()
+        UserRequest userRequest = UserRequest.builder()
                 .measurements(measurementDtos)
                 .build();
-        update(id, userDto);
+        update(id, userRequest);
     }
 
-    public void update(String id, UserDto updateRequest) {
+    public void update(String id, UserRequest updateRequest) {
         Document rawClient = userRepository.findById(id);
-        UserDto clientFromDB = userMapper.documentToDto(rawClient);
-        UserDto updatedDto = userMapper.updateEntity(updateRequest, clientFromDB);
-        Update update = userMapper.dtoToUpdate(updatedDto);
+        UserRequest clientFromDB = userMapper.documentToRequest(rawClient);
+        UserRequest updatedDto = userMapper.updateEntity(updateRequest, clientFromDB);
+        Update update = userMapper.requestToUpdate(updatedDto);
         userRepository.update(id, update);
     }
 

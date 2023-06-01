@@ -3,7 +3,8 @@ package com.example.mongo.user;
 import com.example.mongo.MapstructConfig;
 import com.example.mongo.user.dto.MeasurementDto;
 import com.example.mongo.user.dto.MedicationDto;
-import com.example.mongo.user.dto.UserDto;
+import com.example.mongo.user.dto.UserRequest;
+import com.example.mongo.user.dto.UserResponse;
 import org.bson.Document;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -16,27 +17,27 @@ import java.util.List;
 @Mapper(config = MapstructConfig.class,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
-    UserDto updateEntity(UserDto updateRequest, @MappingTarget UserDto entityToUpdate);
+    UserRequest updateEntity(UserRequest updateRequest, @MappingTarget UserRequest entityToUpdate);
 
-    default Update dtoToUpdate(UserDto userDto) {
+    default Update requestToUpdate(UserRequest userRequest) {
         Update update = new Update();
-        update.set("name", userDto.getName())
-                .set("surname", userDto.getSurname())
-                .set("pesel", userDto.getPesel())
-                .set("phone", userDto.getPhone())
-                .set("measurements", serializeMeasurements(userDto.getMeasurements()))
-                .set("medications", serializeMedications(userDto.getMedications()));
+        update.set("name", userRequest.getName())
+                .set("surname", userRequest.getSurname())
+                .set("pesel", userRequest.getPesel())
+                .set("phone", userRequest.getPhone())
+                .set("measurements", serializeMeasurements(userRequest.getMeasurements()))
+                .set("medications", serializeMedications(userRequest.getMedications()));
         return update;
     }
 
-    default Document dtoToDocument(UserDto userDto) {
+    default Document requestToDocument(UserRequest userRequest) {
         Document document = new Document();
-        document.append("name", userDto.getName());
-        document.append("surname", userDto.getSurname());
-        document.append("pesel", userDto.getPesel());
-        document.append("phone", userDto.getPhone());
-        document.append("measurements", serializeMeasurements(userDto.getMeasurements()));
-        document.append("medications", serializeMedications(userDto.getMedications()));
+        document.append("name", userRequest.getName());
+        document.append("surname", userRequest.getSurname());
+        document.append("pesel", userRequest.getPesel());
+        document.append("phone", userRequest.getPhone());
+        document.append("measurements", serializeMeasurements(userRequest.getMeasurements()));
+        document.append("medications", serializeMedications(userRequest.getMedications()));
         return document;
     }
 
@@ -64,8 +65,20 @@ public interface UserMapper {
         return documents;
     }
 
-    default UserDto documentToDto(Document document) {
-        return UserDto.builder()
+    default UserRequest documentToRequest(Document document) {
+        return UserRequest.builder()
+                .name(document.getString("name"))
+                .surname(document.getString("surname"))
+                .pesel(document.getString("pesel"))
+                .phone(document.getString("phone"))
+                .measurements(deserializeMeasurements(document.getList("measurements", Document.class)))
+                .medications(deserializeMedications(document.getList("medications", Document.class)))
+                .build();
+    }
+
+    default UserResponse documentToResponse(Document document) {
+        return UserResponse.builder()
+                .id(document.getObjectId("_id").toString())
                 .name(document.getString("name"))
                 .surname(document.getString("surname"))
                 .pesel(document.getString("pesel"))

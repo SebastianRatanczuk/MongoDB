@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 @Builder
-public class UserDto {
-
+public class UserResponse {
+    private String id;
     private String name;
     private String surname;
     private String pesel;
