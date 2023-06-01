@@ -1,8 +1,8 @@
 package com.example.mongo.user;
 
-import com.example.mongo.user.dto.UserDto;
 import com.example.mongo.user.dto.MeasurementDto;
 import com.example.mongo.user.dto.MedicationDto;
+import com.example.mongo.user.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;
 import org.springframework.data.mongodb.core.query.Update;
@@ -23,7 +23,7 @@ public class UserService {
     }
 
     public List<String> readAll() {
-        return userRepository.find().stream()
+        return userRepository.findAll().stream()
                 .map(Document::toString)
                 .toList();
     }

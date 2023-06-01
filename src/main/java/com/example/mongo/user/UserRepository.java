@@ -14,14 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserRepository {
 
-    private final MongoTemplate mongoTemplate;
     private static final String COLLECTION_NAME = "user";
+    private final MongoTemplate mongoTemplate;
 
     public void save(Document object) {
         mongoTemplate.insert(object, COLLECTION_NAME);
     }
 
-    public List<Document> find() {
+    public List<Document> findAll() {
         return mongoTemplate.findAll(Document.class, COLLECTION_NAME);
     }
 
