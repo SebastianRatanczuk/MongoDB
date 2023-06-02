@@ -1,0 +1,65 @@
+db.createCollection("user")
+db.createCollection("document")
+
+db.user.insertMany([
+    {
+        "name": "Sebastian",
+        "surname": "Ratanczuk",
+        "pesel": "1231231231234",
+        "phone": "123123123",
+        "measurements": [
+            {
+                "date": "2023.02.01",
+                "measurement": "60/70/120",
+                "info": "blood preasure"
+            },
+            {
+                "date": "2023.02.02",
+                "measurement": "66/75/133",
+                "info": "blood preasure"
+            }
+        ],
+        "medications": [
+            {
+                "medicationName": "biblock",
+                "dosage": "2,5 mg",
+                "time": "1/0/0"
+            }
+        ]
+    },
+    {
+        "name": "Jan",
+        "surname": "Kowalski",
+        "pesel": "1231231231234",
+        "phone": "123123123",
+        "measurements": [
+            {
+                "date": "2023.02.01",
+                "measurement": "60/70/120",
+                "info": "blood preasure"
+            },
+            {
+                "date": "2023.02.02",
+                "measurement": "66/75/133",
+                "info": "blood preasure"
+            }
+        ]
+    }
+])
+
+db.document.insertMany([
+    {
+        "clientId": "647a7371a766de72696e1a38",
+        "date": "2023.02.01",
+        "name": "heartUsg",
+        "category": "usg",
+        "fileData": "0101010001001001"
+    },
+    {
+        "clientId": "647a7371a766de72696e1a38",
+        "date": "date",
+        "name": "name",
+        "category": "category",
+        "fileData": "fileData"
+    }
+])
