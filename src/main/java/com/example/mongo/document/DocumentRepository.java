@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DocumentRepository {
 
-    private static final String COLLECTION_NAME = "documents";
+    private static final String COLLECTION_NAME = "document";
     private final MongoTemplate mongoTemplate;
 
     public void save(Document object) {
